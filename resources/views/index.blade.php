@@ -781,7 +781,7 @@
               <div class="struktur-card text-center">
                 <!-- Foto -->
                 <div class="struktur-foto mb-3">
-                  <img src="{{ $struktur->foto_url ?: asset('assets/img/team/default-user.png') }}"
+                  <img src="{{ $struktur->foto_url }}"
                        alt="{{ $struktur->nama_lengkap }}"
                        class="img-fluid struktur-foto-img">
                 </div>
@@ -797,13 +797,7 @@
                   </p>
                   @endif
 
-                  <div class="struktur-status mt-2">
-                    <span class="badge {{ $struktur->is_active ? 'bg-success' : 'bg-secondary' }} rounded-pill">
-                      <i class="fas fa-circle me-1" style="font-size: 8px;"></i>
-                      {{ $struktur->is_active ? 'Aktif' : 'Nonaktif' }}
-                    </span>
                   </div>
-                </div>
               </div>
             </div>
             @endforeach
@@ -875,6 +869,12 @@
     transition: all 0.3s ease;
   }
 
+  /* Tambahkan background untuk foto yang kosong */
+  .struktur-foto:empty {
+    background: #f8f9fa;
+    border: 2px dashed #dee2e6;
+  }
+
   .struktur-card:hover .struktur-foto-img {
     border-color: #0056b3;
     transform: scale(1.05);
@@ -886,13 +886,14 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
+    padding: 1.5rem;
   }
 
   .struktur-nama {
     font-size: 1.1rem;
     font-weight: 600;
-    color: #333;
-    margin-bottom: 8px;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
     line-height: 1.3;
     min-height: 2.6rem;
     display: flex;
@@ -903,8 +904,8 @@
   .struktur-jabatan {
     font-size: 0.95rem;
     font-weight: 500;
-    color: #007bff;
-    margin-bottom: 5px;
+    color: #5d2f72ff;
+    margin-bottom: 0.25rem;
     line-height: 1.4;
     min-height: 2.8rem;
     display: flex;
@@ -914,26 +915,30 @@
 
   .struktur-nip {
     font-size: 0.85rem;
-    margin-bottom: 10px;
+    margin-bottom: 0.75rem;
     line-height: 1.3;
-  }
-
-  .struktur-status {
-    margin-top: auto;
-  }
-
-  .struktur-status .badge {
-    font-size: 0.75rem;
-    padding: 5px 12px;
-    font-weight: 500;
+    color: #6c757d;
   }
 
   /* Empty State Styling */
   .struktur-empty-state {
-    padding: 60px 20px;
-    background: #f8f9fa;
-    border-radius: 15px;
-    border: 2px dashed #dee2e6;
+    padding: 80px 20px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 20px;
+    border: 2px solid #e9ecef;
+    text-align: center;
+  }
+
+  .struktur-empty-state i {
+    font-size: 3rem;
+    color: #6c757d;
+    margin-bottom: 1rem;
+  }
+
+  .struktur-empty-state h5 {
+    color: #495057;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
   }
 
   .struktur-empty-state i {

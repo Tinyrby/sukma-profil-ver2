@@ -143,11 +143,11 @@ class PublicManagementController extends Controller
         if ($request->hasFile('foto')) {
             $image = $request->file('foto');
             $imageName = time() . '_' . Str::slug($request->nama_lengkap) . '.' . $image->getClientOriginalExtension();
-            $image->storeAs('public/struktur', $imageName);
+            $image->storeAs('struktur', $imageName, 'public');
             $data['foto'] = 'struktur/' . $imageName;
         }
 
-        $data['is_active'] = $request->has('is_active') ? true : true;
+        $data['is_active'] = true;
 
         StrukturOrganisasi::create($data);
 
@@ -178,17 +178,17 @@ class PublicManagementController extends Controller
         // Handle image upload
         if ($request->hasFile('foto')) {
             // Delete old image if exists
-            if ($struktur->foto && Storage::exists('public/' . $struktur->foto)) {
-                Storage::delete('public/' . $struktur->foto);
+            if ($struktur->foto && Storage::disk('public')->exists($struktur->foto)) {
+                Storage::disk('public')->delete($struktur->foto);
             }
 
             $image = $request->file('foto');
             $imageName = time() . '_' . Str::slug($request->nama_lengkap) . '.' . $image->getClientOriginalExtension();
-            $image->storeAs('public/struktur', $imageName);
+            $image->storeAs('struktur', $imageName, 'public');
             $data['foto'] = 'struktur/' . $imageName;
         }
 
-        $data['is_active'] = $request->has('is_active');
+        $data['is_active'] = true;
 
         $struktur->update($data);
 

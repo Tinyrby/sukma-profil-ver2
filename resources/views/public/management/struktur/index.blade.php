@@ -76,7 +76,6 @@
                                 <th class="border-0">Jabatan</th>
                                 <th class="border-0">NIP</th>
                                 <th class="border-0">Urutan</th>
-                                <th class="border-0">Status</th>
                                 <th class="border-0 text-center">Aksi</th>
                             </tr>
                         </thead>
@@ -107,13 +106,6 @@
                                     <span class="urutan-badge">{{ $member->urutan }}</span>
                                 </td>
                                 <td>
-                                    @if($member->is_active)
-                                        <span class="badge bg-success">Aktif</span>
-                                    @else
-                                        <span class="badge bg-secondary">Nonaktif</span>
-                                    @endif
-                                </td>
-                                <td>
                                     <div class="action-buttons">
                                         <a href="{{ route('public.management.struktur.edit', $member->id) }}"
                                            class="btn btn-sm btn-outline-warning"
@@ -137,7 +129,7 @@
                             </tr>
                             @empty
                             <tr>
-                                <td colspan="7" class="text-center py-5">
+                                <td colspan="6" class="text-center py-5">
                                     <div class="text-muted">
                                         <i class="bi bi-people fs-1"></i>
                                         <h5 class="mt-3">Belum ada data struktur organisasi</h5>

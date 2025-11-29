@@ -152,18 +152,7 @@
                         </div>
                     </div>
 
-                    <!-- Row 5: Status -->
-                    <div class="row mb-4">
-                        <div class="col-12">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="is_active" name="is_active" checked>
-                                <label class="form-check-label" for="is_active">
-                                    Aktif (tampilkan di website)
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-
+  
                     <!-- Buttons -->
                     <div class="row">
                         <div class="col-12">

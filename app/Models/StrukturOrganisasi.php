@@ -37,10 +37,11 @@ class StrukturOrganisasi extends Model
     public function getFotoUrlAttribute()
     {
         if ($this->foto) {
-            return asset('storage/' . $this->foto);
+            // Hardcode URL untuk development server
+            return 'http://localhost:8000/storage/' . $this->foto;
         }
 
         // Default foto jika tidak ada
-        return asset('assets/img/team/team-1.jpg');
+        return 'http://localhost:8000/assets/img/team/team-1.jpg';
     }
 }

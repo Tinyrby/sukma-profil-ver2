@@ -139,7 +139,7 @@ class StrukturOrganisasiSeeder extends Seeder
 
         // Insert data struktur organisasi
         foreach ($strukturOrganisasi as $data) {
-            DB::table('struktur_organisasis')->insert($data);
+            DB::table('struktur_organisasi')->insert($data);
         }
 
         $this->command->info('✅ Data struktur organisasi Desa Sukma berhasil disimpan!');
