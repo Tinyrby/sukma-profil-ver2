@@ -1,0 +1,190 @@
+/* --- File: public/css/news-scroll.css --- */
+
+:root {
+    --ns-primary: #2563eb;
+    --ns-text-dark: #1f2937;
+    --ns-text-light: #6b7280;
+    --ns-bg-card: #ffffff;
+    --ns-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --ns-card-width: 300px;
+}
+
+.news-section {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    padding: 20px 0;
+}
+
+.news-section .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding: 0 1rem;
+}
+
+.news-section .section-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--ns-text-dark);
+    margin: 0;
+}
+
+.news-section .scroll-controls {
+    display: flex;
+    gap: 10px;
+}
+
+.news-section .scroll-btn {
+    background-color: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: var(--ns-shadow);
+    transition: all 0.2s ease;
+    color: var(--ns-text-dark);
+    font-size: 1.2rem;
+    z-index: 10;
+}
+
+.news-section .scroll-btn:hover {
+    background-color: var(--ns-primary);
+    color: white;
+}
+
+/* CONTAINER SCROLL */
+.news-scroller {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding: 10px 5px 25px 5px;
+    scroll-snap-type: x mandatory; /* Default snap */
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    cursor: grab;
+    user-select: none;
+    -webkit-user-select: none;
+    transform: translateZ(0);
+    will-change: scroll-position;
+}
+
+/* Saat sedang didrag (Active) */
+.news-scroller.active {
+    cursor: grabbing;
+    cursor: -webkit-grabbing;
+    scroll-behavior: auto !important;
+    scroll-snap-type: none !important;
+}
+
+.news-scroller::-webkit-scrollbar {
+    display: none;
+}
+
+/* KARTU BERITA */
+.news-card {
+    flex: 0 0 auto;
+    width: var(--ns-card-width);
+    background: var(--ns-bg-card);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--ns-shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    scroll-snap-align: start;
+    border: 1px solid #e5e7eb;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    -webkit-user-drag: none;
+}
+
+.news-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.news-image-wrapper {
+    position: relative;
+    height: 180px;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.news-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.news-card:hover .news-image {
+    transform: scale(1.05);
+}
+
+.news-category {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: rgba(37, 99, 235, 0.9);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.news-content {
+    padding: 1.25rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.news-date {
+    font-size: 0.8rem;
+    color: var(--ns-text-light);
+    margin-bottom: 0.5rem;
+}
+
+.news-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--ns-text-dark);
+    margin: 0 0 0.75rem 0;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.news-excerpt {
+    font-size: 0.9rem;
+    color: var(--ns-text-light);
+    line-height: 1.5;
+    margin-bottom: 1rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.read-more {
+    margin-top: auto;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--ns-primary);
+}
+
+@media (max-width: 640px) {
+    :root { --ns-card-width: 260px; }
+    .section-header { flex-direction: row; }
+}
